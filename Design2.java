@@ -47,6 +47,9 @@ public class Design2
     this.xOrRho = xOrRho;
     this.yOrTheta = yOrTheta;
     typeCoord = type;
+    
+ 
+    }
   }
 	
   
