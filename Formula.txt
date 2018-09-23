@@ -1,0 +1,4 @@
+Rho to X: (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
+Theta yo Y: (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
+X to Rho: (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
+Y to Theta: Math.toDegrees(Math.atan2(yOrTheta, xOrRho));

@@ -47,9 +47,6 @@ public class Design2
     this.xOrRho = xOrRho;
     this.yOrTheta = yOrTheta;
     typeCoord = type;
-    
- 
-    }
   }
 	
   
@@ -58,34 +55,26 @@ public class Design2
  
   public double getX()
   {
-    if(typeCoord == 'C') 
-      return xOrRho;
-    else 
-      return (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
+    //+++Computes on demand for x coordinates in cartesian+++
+    return (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
   }
   
   public double getY()
   {
-    if(typeCoord == 'C') 
-      return yOrTheta;
-    else 
-      return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
+    //+++Computes on demand for y coordinates in cartesian+++
+    return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
   }
   
   public double getRho()
-  {
-    if(typeCoord == 'P') 
-      return xOrRho;
-    else 
-      return (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
+  {   
+    //+++SImply return the Rho coordinates for Polar+++ 
+    return xOrRho;
   }
   
   public double getTheta()
-  {
-    if(typeCoord == 'P')
-      return yOrTheta;
-    else 
-      return Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
+  {   
+    //+++SImply return the Theta coordinates for Polar+++ 
+    return yOrTheta;
   }
   
 	
@@ -112,11 +101,7 @@ public class Design2
   {
     if(typeCoord != 'C')
     {
-      //Calculate X and Y
-      double temp = getX();
-      yOrTheta = getY();
-      xOrRho = temp;
-   
+      //+++Deleted the instant variables as they store cartesian variables+++
       typeCoord = 'C';	//Change coord type identifier
     }
   }
