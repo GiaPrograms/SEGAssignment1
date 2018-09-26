@@ -13,7 +13,7 @@ import java.io.*;
  * @author Paul Holden
  * @version July 2000
  */
-public class Design2Test
+public class PointCP2Test
 {
   //Class methods *****************************************************
 
@@ -33,7 +33,7 @@ public class Design2Test
    */
   public static void main(String[] args)
   {
-    Design2 point;
+    PointCP2 point;
 
     System.out.println("Cartesian-Polar Coordinates Conversion Program");
 
@@ -42,7 +42,7 @@ public class Design2Test
     // If he did not, prompt the user for them.
     try
     {
-      point = new Design2(args[0].toUpperCase().charAt(0), 
+      point = new PointCP2(args[0].toUpperCase().charAt(0), 
         Double.valueOf(args[1]).doubleValue(), 
         Double.valueOf(args[2]).doubleValue());
     }
@@ -80,7 +80,7 @@ public class Design2Test
    * @throws IOException If there is an error getting input from
    *         the user.
    */
-  private static Design2 getInput() throws IOException
+  private static PointCP2 getInput() throws IOException
   {
     byte[] buffer = new byte[1024];  //Buffer to hold byte input
     boolean isOK = false;  // Flag set if input correct
@@ -158,6 +158,6 @@ public class Design2Test
       isOK = false;
     }
     //Return a new PointCP object
-    return (new Design2(coordType, a, b));
+    return (new PointCP2(coordType, a, b));
   }
 }

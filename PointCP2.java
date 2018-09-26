@@ -12,7 +12,7 @@
  * @author Dr Timothy C. Lethbridge
  * @version July 2000
  */
-public class Design6
+public class PointCP2
 {
   //Instance variables ************************************************
 
@@ -40,7 +40,7 @@ public class Design6
   /**
    * Constructs a coordinate object, with a type identifier.
    */
-  public Design6(char type, double xOrRho, double yOrTheta)
+  public PointCP2(char type, double xOrRho, double yOrTheta)
   {
     if(type != 'C' && type != 'P')
       throw new IllegalArgumentException();
@@ -55,18 +55,12 @@ public class Design6
  
   public double getX()
   {
-    if(typeCoord == 'C') 
       return xOrRho;
-    else 
-      return (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
   }
   
   public double getY()
   {
-    if(typeCoord == 'C') 
       return yOrTheta;
-    else 
-      return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
   }
   
   public double getRho()
@@ -85,7 +79,6 @@ public class Design6
       return Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
   }
   
-	
   /**
    * Converts Cartesian coordinates to Polar coordinates.
    */
@@ -105,17 +98,20 @@ public class Design6
   /**
    * Converts Polar coordinates to Cartesian coordinates.
    */
-  public void convertStorageToCartesian()
+  public PointCP3 convertStorageToCartesian()
   {
     if(typeCoord != 'C')
     {
       //Calculate X and Y
-      double temp = getX();
-      yOrTheta = getY();
-      xOrRho = temp;
+      double calculateX = (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
+      double calculateY = (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
    
       typeCoord = 'C';	//Change coord type identifier
+
+      return "";
     }
+
+    return "";
   }
 
   /**
@@ -126,7 +122,7 @@ public class Design6
    * @param pointB The second point.
    * @return The distance between the two points.
    */
-  public double getDistance(Design6 pointB)
+  public double getDistance(PointCP2 pointB)
   {
     // Obtain differences in X and Y, sign is not important as these values
     // will be squared later.
@@ -144,13 +140,13 @@ public class Design6
    * @param rotation The number of degrees to rotate the point.
    * @return The rotated image of the original point.
    */
-  public Design6 rotatePoint(double rotation)
+  public PointCP2 rotatePoint(double rotation)
   {
     double radRotation = Math.toRadians(rotation);
     double X = getX();
     double Y = getY();
         
-    return new Design6('C',
+    return new PointCP2('C',
       (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
       (Math.sin(radRotation) * X) + (Math.cos(radRotation) * Y));
   }
