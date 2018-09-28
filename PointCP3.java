@@ -55,25 +55,33 @@ public class PointCP3
  
   public double getX()
   {
-    //if(typeCoord == 'C') 
+    if(typeCoord == 'C') 
       return xOrRho;
+    else 
+      return (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
   }
   
   public double getY()
   {
-    //if(typeCoord == 'C') 
+    if(typeCoord == 'C') 
       return yOrTheta;
+    else 
+      return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
   }
   
   public double getRho()
   {
-   // if(typeCoord == 'P') 
+    if(typeCoord == 'P') 
+      return xOrRho;
+    else 
       return (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
   }
   
   public double getTheta()
   {
-    //if(typeCoord == 'P')
+    if(typeCoord == 'P')
+      return yOrTheta;
+    else 
       return Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
   }
   
@@ -81,7 +89,7 @@ public class PointCP3
   /**
    * Converts Cartesian coordinates to Polar coordinates.
    */
-  public PointCP2 convertStorageToPolar()
+  public void convertStorageToPolar()
   {
     if(typeCoord != 'P')
     {
@@ -91,11 +99,7 @@ public class PointCP3
       xOrRho = temp;
       
       typeCoord = 'P';  //Change coord type identifier
-
-      return "";
     }
-
-    return "";
   }
 	
   /**
