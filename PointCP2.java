@@ -32,7 +32,11 @@ public class PointCP2 {
    */
   private double yOrTheta;
 
-  // +++Added an instance variable that store a cartessian coordinate created from class PointCP3+++
+
+  /* +++The purpose of this variable is that it can store a cartisian coordinatecomputed from the class
+  PointCP3 base on the xOrRho and yOrTheta arguments. Meaning that convertion from polar to cartesian will not be store 
+  by the xOrRho or yOrTheta variables and that the other class can handle the cartesion conversion calculation.+++    
+   */
   private PointCP3 newCartesianPoint;
 
   // Constructors ******************************************************
@@ -46,16 +50,22 @@ public class PointCP2 {
     this.xOrRho = xOrRho;
     this.yOrTheta = yOrTheta;
     typeCoord = type;
+
+    // +++Assigned the instant variable of PointCP3 with the following arguments+++
     newCartesianPoint = new PointCP3(typeCoord, xOrRho, yOrTheta); 
   }
 
   // Instance methods **************************************************
 
   public double getX() {
+
+    //+++Have this method simply return the x value.+++
     return xOrRho;
   }
 
   public double getY() {
+
+    //+++Have this method simply return the y value.+++
     return yOrTheta;
   }
 
@@ -77,16 +87,27 @@ public class PointCP2 {
    * Converts Cartesian coordinates to Polar coordinates.
    */
   public void convertStorageToPolar() {
+
+    /*+++If the coordinate is not polar and that the cartesian coordinate does not equal the coordinate of this class
+    then have the current class coordinates be equal to the cartesian coordinate created from PointCP3. Both X and Y 
+    will be converted into polar coordinate and the type of PointCP2 will be mark as 'P'. The reason for the additional 
+    requirement in the if statement is to ensure that the current coordinate will be chage into the new cartesian corrdinate 
+    created by class PointCP3.+++
+     */ 
     if (typeCoord != 'P' && (xOrRho != newCartesianPoint.getX() || yOrTheta != newCartesianPoint.getY())) {
 
+      //+++Have the instance variables equal to the new cartesian coordinate+++
       xOrRho = newCartesianPoint.getX();
       yOrTheta = newCartesianPoint.getY();
 
+      // Calculate RHO and THETA
       double temp = getRho();
       yOrTheta = getTheta();
       xOrRho = temp;
 
       typeCoord = 'P'; // Change coord type identifier
+
+      //+++When the If statement is not satisfy, then calulate RHO and THETA with the current coordinate+++
     }else {
 
       // Calculate RHO and THETA
@@ -104,11 +125,12 @@ public class PointCP2 {
    */
   public PointCP3 convertStorageToCartesian() {
 
-    // Calculate X and Y
+    //+++Calculate X and Y coordinate from PointCP3+++
     newCartesianPoint.convertStorageToCartesian();
 
     typeCoord = 'C'; // Change coord type identifier
 
+    //+++Return a cartesian point+++
     return newCartesianPoint;
   }
 
@@ -121,12 +143,9 @@ public class PointCP2 {
    * @return The distance between the two points.
    */
   public double getDistance(PointCP2 pointB) {
-    // Obtain differences in X and Y, sign is not important as these values
-    // will be squared later.
-    double deltaX = getX() - pointB.getX();
-    double deltaY = getY() - pointB.getY();
 
-    return Math.sqrt((Math.pow(deltaX, 2) + Math.pow(deltaY, 2)));
+    // +++Obtain differences in Rho and Theta, sign is not important as these values+++
+    return Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(pointB.getRho(), 2) - (2 * xOrRho * pointB.getRho() * Math.cos(Math.toRadians(yOrTheta - pointB.getTheta()))));
   }
 
   /**
@@ -139,10 +158,10 @@ public class PointCP2 {
    */
   public PointCP2 rotatePoint(double rotation) {
     double radRotation = Math.toRadians(rotation);
-    double X = getX();
-    double Y = getY();
+    double X = getRho();
+    double Y = getTheta();
 
-    return new PointCP2('C', (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
+    return new PointCP2('P', (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
         (Math.sin(radRotation) * X) + (Math.cos(radRotation) * Y));
   }
 
@@ -152,6 +171,7 @@ public class PointCP2 {
    * @return A String containing information about the coordinates.
    */
   public String toString() {
+    //+++Cartesian coordinate is desplay instead of the cartesian coordinate of this class+++
     return "Stored as " + (typeCoord == 'C' ? "Cartesian  (" + newCartesianPoint.getX() + "," + newCartesianPoint.getY() + ")"
         : "Polar [" + getRho() + "," + getTheta() + "]") + "\n";
   }

@@ -33,7 +33,10 @@ public class PointCP2Test
    */
   public static void main(String[] args)
   {
-    PointCP2 point;
+    PointCP2 point, nPoint;
+
+    //+++Created new point to test the method getDistance().+++
+    nPoint = new PointCP2('P', 5, 5);
 
     System.out.println("Cartesian-Polar Coordinates Conversion Program");
 
@@ -63,11 +66,15 @@ public class PointCP2Test
         return;
       }
     }
+
+    //+++Added getDistance and rotatePoint methods for testing.+++
     System.out.println("\nYou entered:\n" + point);
     point.convertStorageToCartesian();
     System.out.println("\nAfter asking to store as Cartesian:\n" + point);
     point.convertStorageToPolar();
     System.out.println("\nAfter asking to store as Polar:\n" + point);
+    System.out.println("\nDistant of current coordinate to polar coordinate(5,5):\n" + point.getDistance(nPoint));
+    System.out.println("\nRotate current coordinate by (270):\n" + point.rotatePoint(270));
   }
 
   /**
