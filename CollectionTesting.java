@@ -40,13 +40,23 @@ public class CollectionTesting {
             int random = new Random().nextInt(10);
              
             v.add(random); 
-         }   
+         } 
+         
+           
+    }
+    
+    public static void addArray(int[] a){
+      int total;
+      for(int i = 0; i < a.size(); i++){
+         
+         total += a[i];
+      }
+    
     }
 
 
     public static void main(String[] args){
-
-        /*
+        
         double start = System.nanoTime();
         genArray(100000000);
         genArray(100000000);
@@ -55,7 +65,7 @@ public class CollectionTesting {
         total= total/1000000000.0;
         System.out.println("The total time for array is " + total);
         System.out.println("============================================================================");
-        */
+        
 
         double start2 = System.nanoTime();
         genList(100000000);
@@ -65,13 +75,16 @@ public class CollectionTesting {
         System.out.println("The total time for arrayList is " + total2);
         System.out.println("============================================================================");
 
-        /*
+        
         double start3 = System.nanoTime();
         genVector(100000000);
         double end3 = System.nanoTime();
         Double total3 = end3 - start3;
         total3= total3/1000000000.0;
         System.out.println("The total time for vector is " + total3);
-        */
+     
+        
+        
     }
+    
 }

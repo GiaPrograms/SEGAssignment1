@@ -1,0 +1,39 @@
+----jGRASP exec: java CollectionTesting
+
+The total time for array is 14.944253153
+============================================================================
+The total time for arrayList is 10.842014402
+============================================================================
+The total time for vector is 12.641877609
+
+ ----jGRASP: operation complete.
+
+ ----jGRASP exec: java CollectionTesting
+
+The total time for array is 12.261302442
+============================================================================
+The total time for arrayList is 8.425690919
+============================================================================
+The total time for vector is 8.007119283
+
+ ----jGRASP: operation complete.
+
+ ----jGRASP exec: java CollectionTesting
+
+The total time for array is 17.597956136
+============================================================================
+The total time for arrayList is 12.498592853
+============================================================================
+The total time for vector is 10.605105389
+
+ ----jGRASP: operation complete.
+
+ ----jGRASP exec: java CollectionTesting
+
+The total time for array is 12.885622629
+============================================================================
+The total time for arrayList is 10.405570456
+============================================================================
+The total time for vector is 11.010952965
+
+ ----jGRASP: operation complete.
