@@ -37,7 +37,6 @@ public class PointCP2 {
   PointCP3 base on the xOrRho and yOrTheta arguments. Meaning that convertion from polar to cartesian will not be store 
   by the xOrRho or yOrTheta variables and that the other class can handle the cartesion conversion calculation.+++    
    */
-  private PointCP3 temporaryPoint;
 
   private PointCP3 newCartesianPoint;
 

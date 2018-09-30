@@ -1,11 +1,11 @@
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.Random;
 
 public class List{
 
    public static void genList(int size){
        
-       ArrayList alist= new ArrayList();
+       ArrayList<Integer> alist= new ArrayList<Integer>();
        int random;
 
         for(int i = 0; i < size; i++){
