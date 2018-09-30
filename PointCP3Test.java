@@ -36,7 +36,7 @@ public class PointCP3Test
     PointCP3 point, nPoint;
 
     //+++Created new point to test the method getDistance().+++
-    nPoint = new PointCP2('C', 5, 5);
+    nPoint = new PointCP3('C', 5, 5);
 
     System.out.println("Cartesian-Polar Coordinates Conversion Program");
 
