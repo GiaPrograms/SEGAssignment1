@@ -18,10 +18,11 @@ public class CollectionTesting {
     public static void main(String[] args){
 
         double start = System.nanoTime();
-        genArray(1000000);
+        genArray(100000000);
+        genArray(100000000);
         double end = System.nanoTime();
         Double total = end - start;
-
+        total= total/1000000000.0;
         System.out.println("The total time for array is " + total);
 
     }
