@@ -53,7 +53,6 @@ public class PointCP3
       this.xOrRho = xOrRho;
       this.yOrTheta = yOrTheta;
       typeCoord = type;
-      newPolarPoint = new PointCP2 (type, xOrRho , yOrTheta);
    }
 	
     
@@ -93,8 +92,14 @@ public class PointCP3
     * Converts Cartesian coordinates to Polar coordinates.
     */
    public PointCP2 convertStorageToPolar()
-   {
+   {  
+
+      newPolarPoint = new PointCP2 (typeCoord, xOrRho , yOrTheta);
+
       newPolarPoint.convertStorageToPolar();//calls cp2 to make a new object
+
+      xOrRho = newPolarPoint.getRho();
+      yOrTheta = newPolarPoint.getTheta();
       
       typeCoord= 'P';//changed, so its polar now
       

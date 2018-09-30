@@ -37,6 +37,8 @@ public class PointCP2 {
   PointCP3 base on the xOrRho and yOrTheta arguments. Meaning that convertion from polar to cartesian will not be store 
   by the xOrRho or yOrTheta variables and that the other class can handle the cartesion conversion calculation.+++    
    */
+  private PointCP3 temporaryPoint;
+
   private PointCP3 newCartesianPoint;
 
   // Constructors ******************************************************
@@ -45,14 +47,14 @@ public class PointCP2 {
    * Constructs a coordinate object, with a type identifier.
    */
   public PointCP2(char type, double xOrRho, double yOrTheta) {
-    if (type != 'C' && type != 'P')
+    if (type != 'C' && type != 'P'){
       throw new IllegalArgumentException();
+    }
+     
     this.xOrRho = xOrRho;
     this.yOrTheta = yOrTheta;
     typeCoord = type;
 
-    // +++Assigned the instant variable of Poi ntCP3 with the following arguments+++
-    newCartesianPoint = new PointCP3(typeCoord, xOrRho, yOrTheta); 
   }
 
   // Instance methods **************************************************
@@ -94,30 +96,13 @@ public class PointCP2 {
     requirement in the if statement is to ensure that the current coordinate will be chage into the new cartesian corrdinate 
     created by class PointCP3.+++
      */ 
-    if (typeCoord != 'P' && (xOrRho != newCartesianPoint.getX() || yOrTheta != newCartesianPoint.getY())) {
-
-      //+++Have the instance variables equal to the new cartesian coordinate+++
-      xOrRho = newCartesianPoint.getX();
-      yOrTheta = newCartesianPoint.getY();
-
+  
       // Calculate RHO and THETA
       double temp = getRho();
       yOrTheta = getTheta();
       xOrRho = temp;
 
       typeCoord = 'P'; // Change coord type identifier
-
-      //+++When the If statement is not satisfy, then calulate RHO and THETA with the current coordinate+++
-    }else {
-
-      // Calculate RHO and THETA
-      double temp = getRho();
-      yOrTheta = getTheta();
-      xOrRho = temp;
-
-      typeCoord = 'P'; // Change coord type identifier
-
-    }
   }
 
   /**
@@ -125,8 +110,13 @@ public class PointCP2 {
    */
   public PointCP3 convertStorageToCartesian() {
 
+    newCartesianPoint = new PointCP3(typeCoord, this.xOrRho, this.yOrTheta); 
+
     //+++Calculate X and Y coordinate from PointCP3+++
     newCartesianPoint.convertStorageToCartesian();
+
+    xOrRho = newCartesianPoint.getX();
+    yOrTheta = newCartesianPoint.getY();
 
     typeCoord = 'C'; // Change coord type identifier
 
@@ -172,7 +162,7 @@ public class PointCP2 {
    */
   public String toString() {
     //+++Cartesian coordinate is desplay instead of the cartesian coordinate of this class+++
-    return "Stored as " + (typeCoord == 'C' ? "Cartesian  (" + newCartesianPoint.getX() + "," + newCartesianPoint.getY() + ")"
+    return "Stored as " + (typeCoord == 'C' ? "Cartesian  (" + convertStorageToCartesian().getX() + "," + convertStorageToCartesian().getY() + ")"
         : "Polar [" + getRho() + "," + getTheta() + "]") + "\n";
   }
 }
