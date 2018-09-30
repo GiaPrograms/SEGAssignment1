@@ -1,23 +1,23 @@
-import java.util.ArrayList;
-import java.util.Random;
 
-public class List{
+import java.util.*;
 
-   public static void genList(int size){
+public class Vector{
+
+   public static void genVector(int size){
        
-       ArrayList <Integer> alist= new ArrayList <Integer>();
+       Vector v = new Vector();
        int random;
 
         for(int i = 0; i < size; i++){
             
            random = new Random().nextInt(10);
             
-            alist.add(random);    
+           v.add(random);    
         }   
    }
    public static void main(String[]args){
       double start = System.nanoTime();
-      genList(100000000);
+      genVector(100);
       double end = System.nanoTime();
       Double total = end - start;
       total= total/1000000000.0;
