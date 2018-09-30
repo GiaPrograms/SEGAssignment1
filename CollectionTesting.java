@@ -58,7 +58,7 @@ public class CollectionTesting {
         */
 
         double start2 = System.nanoTime();
-        genList(100000000);
+        genList(10000000);
         double end2 = System.nanoTime();
         Double total2 = end2 - start2;
         total2= total2/1000000000.0;
