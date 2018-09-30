@@ -51,7 +51,7 @@ public class PointCP2 {
     this.yOrTheta = yOrTheta;
     typeCoord = type;
 
-    // +++Assigned the instant variable of PointCP3 with the following arguments+++
+    // +++Assigned the instant variable of Poi ntCP3 with the following arguments+++
     newCartesianPoint = new PointCP3(typeCoord, xOrRho, yOrTheta); 
   }
 
