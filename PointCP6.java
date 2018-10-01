@@ -23,13 +23,13 @@ public interface PointCP6<T, S>
   
   double getTheta();
 	
-  convertStorageToPolar();
+  T convertStorageToPolar();
 	
-  convertStorageToCartesian();
+  S convertStorageToCartesian();
 
   double getDistance(PointCP pointB);
  
-  T rotatePoint(double rotation);
+  PointCP rotatePoint(double rotation);
   
   String toString();
   

@@ -109,8 +109,10 @@ public class PointCP3 implements PointCP6<PointCP2, PointCP3>
    /**
     * Converts Polar coordinates to Cartesian coordinates.
     */
-   public void convertStorageToCartesian()
+   public PointCP3 convertStorageToCartesian()
    {
+      PointCP3 newPolarPoint = new PointCP3 (typeCoord, xOrRho , yOrTheta);
+
       if(typeCoord != 'C')
       {
          //Calculate X and Y
@@ -120,6 +122,8 @@ public class PointCP3 implements PointCP6<PointCP2, PointCP3>
       
          typeCoord = 'C';	//Change coord type identifier
       }
+
+      return newPolarPoint;
    }
 
    /**
@@ -130,7 +134,7 @@ public class PointCP3 implements PointCP6<PointCP2, PointCP3>
     * @param pointB The second point.
     * @return The distance between the two points.
     */
-   public double getDistance(PointCP3 pointB)
+   public double getDistance(PointCP pointB)
    {
       // Obtain differences in X and Y, sign is not important as these values
       // will be squared later.
@@ -149,13 +153,13 @@ public class PointCP3 implements PointCP6<PointCP2, PointCP3>
     * @return The rotated image of the original point.
     */
 
-   public PointCP3 rotatePoint(double rotation)
+   public PointCP rotatePoint(double rotation)
    {
       double radRotation = Math.toRadians(rotation);
       double X = getX();
       double Y = getY();
           
-      return new PointCP3('C',
+      return new PointCP('C',
          (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
          (Math.sin(radRotation) * X) + (Math.cos(radRotation) * Y));
    }

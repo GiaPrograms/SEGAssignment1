@@ -41,19 +41,8 @@ public class CollectionTesting {
              
             v.add(random); 
          } 
-         
            
     }
-    
-    public static void addArray(int[] a){
-      int total;
-      for(int i = 0; i < a.size(); i++){
-         
-         total += a[i];
-      }
-    
-    }
-
 
     public static void main(String[] args){
         

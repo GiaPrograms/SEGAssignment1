@@ -33,10 +33,10 @@ public class PointCP2Test
    */
   public static void main(String[] args)
   {
-    PointCP2 point, nPoint;
+    PointCP2 point;
 
     //+++Created new point to test the method getDistance().+++
-    nPoint = new PointCP2('P', 5, 5);
+    PointCP nPoint = new PointCP('P', 5, 5);
 
     System.out.println("Cartesian-Polar Coordinates Conversion Program");
 

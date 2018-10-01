@@ -12,7 +12,7 @@
  * @author Dr Timothy C. Lethbridge
  * @version July 2000
  */
-public class PointCP2 implements PointCP6<PointCP3, PointCP2>{
+public class PointCP2 implements PointCP6<PointCP2, PointCP3>{
   // Instance variables ************************************************
 
   /**
@@ -87,7 +87,7 @@ public class PointCP2 implements PointCP6<PointCP3, PointCP2>{
   /**
    * Converts Cartesian coordinates to Polar coordinates.
    */
-  public void convertStorageToPolar() {
+  public PointCP2 convertStorageToPolar() {
 
     /*+++If the coordinate is not polar and that the cartesian coordinate does not equal the coordinate of this class
     then have the current class coordinates be equal to the cartesian coordinate created from PointCP3. Both X and Y 
@@ -95,13 +95,15 @@ public class PointCP2 implements PointCP6<PointCP3, PointCP2>{
     requirement in the if statement is to ensure that the current coordinate will be chage into the new cartesian corrdinate 
     created by class PointCP3.+++
      */ 
-  
+      PointCP2 newPolarPoint = new PointCP2(typeCoord, this.xOrRho, this.yOrTheta); 
       // Calculate RHO and THETA
       double temp = getRho();
       yOrTheta = getTheta();
       xOrRho = temp;
 
       typeCoord = 'P'; // Change coord type identifier
+
+      return newPolarPoint;
   }
 
   /**
@@ -131,7 +133,7 @@ public class PointCP2 implements PointCP6<PointCP3, PointCP2>{
    * @param pointB The second point.
    * @return The distance between the two points.
    */
-  public double getDistance(PointCP2 pointB) {
+  public double getDistance(PointCP pointB) {
 
     // +++Obtain differences in Rho and Theta, sign is not important as these values+++
     return Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(pointB.getRho(), 2) - (2 * xOrRho * pointB.getRho() * Math.cos(Math.toRadians(yOrTheta - pointB.getTheta()))));
@@ -146,12 +148,12 @@ public class PointCP2 implements PointCP6<PointCP3, PointCP2>{
    * @return The rotated image of the original point.
    */
 
-  public PointCP2 rotatePoint(double rotation) {
+  public PointCP rotatePoint(double rotation) {
     double radRotation = Math.toRadians(rotation);
     double X = getRho();
     double Y = getTheta();
 
-    return new PointCP2('P', (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
+    return new PointCP('P', (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
         (Math.sin(radRotation) * X) + (Math.cos(radRotation) * Y));
   }
 
