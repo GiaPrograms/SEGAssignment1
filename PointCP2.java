@@ -12,7 +12,7 @@
  * @author Dr Timothy C. Lethbridge
  * @version July 2000
  */
-public class PointCP2 {
+public class PointCP2 implements PointCP6<PointCP3, PointCP2>{
   // Instance variables ************************************************
 
   /**
@@ -145,6 +145,7 @@ public class PointCP2 {
    * @param rotation The number of degrees to rotate the point.
    * @return The rotated image of the original point.
    */
+
   public PointCP2 rotatePoint(double rotation) {
     double radRotation = Math.toRadians(rotation);
     double X = getRho();
